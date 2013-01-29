@@ -6,6 +6,13 @@ class Gzip < Formula
   mirror 'http://ftp.gnu.org/gnu/gzip/gzip-1.5.tar.gz'
   sha1 '56a80da7b032107372d3f3343bed7c7af452a826'
 
+  def patches
+    # Adds -rsyncable support
+    [
+      "http://cvs.pld-linux.org/cgi-bin/viewvc.cgi/cvs/packages/gzip/gzip-rsyncable.patch?revision=1.4&view=co"
+    ]
+  end
+
   def install
     system "./configure", "--disable-debug", "--disable-dependency-tracking",
                           "--prefix=#{prefix}"
